@@ -1,28 +1,50 @@
-# Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
+#include "stdafx.h"
+#include <conio.h>
+#include <string>
+#include <iostream>
 
-# Precompiled Headers
-*.gch
-*.pch
+#define tam 100
 
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
+using namespace std;
 
-# Fortran module files
-*.mod
+void validar_contrasenha(char cont[], bool &valido, int n)
+{
+	int i;
+	bool tiene_vocal, tamanho_aceptable;
+	tiene_vocal = false;
+	for(i=0;i<n;i++)
+	{
+		if(cont[i] == 'a' || cont[i] == 'e' || cont[i] == 'i' || cont[i] == 'o' || cont[i] == 'u')
+		{
+			tiene_vocal = true;
+		}
+	}
+	tamanho_aceptable = false;
+	if(n >= 10)
+	{
+		tamanho_aceptable = true;
+	}
+	valido = tamanho_aceptable && tiene_vocal;
+	//return valido;
+}
 
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
+void preg3()
+{
+	char cont[tam];
+	int n;
+	bool valido;
+	cout<<"contrasenha:";
+	gets(cont);
+	n = strlen(cont);
+	validar_contrasenha(cont,valido,n);
+	if(valido)
+	{
+		cout<<"valido!"<<endl;
+	}
+	else
+	{
+		cout<<"no valido!"<<endl;
+	}
+	getch();
+}
 
-# Executables
-*.exe
-*.out
-*.app
